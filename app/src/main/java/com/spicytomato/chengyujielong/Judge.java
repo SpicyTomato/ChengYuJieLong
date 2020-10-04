@@ -27,7 +27,7 @@ public class Judge {
         int length = 0;
 
 
-        if (preOrientation == VERTICAL) {
+        if (preOrientation == HORIZONTAL) {
             for (int i = preY - 1; i >= 0; i--) {
                 if (words[preX][i] == null) {
                     x_left++;
@@ -36,7 +36,7 @@ public class Judge {
                     break;
                 }
             }
-            for (int i = preY + 1; i <= width - 1; i++) {
+            for (int i = preY + 1; i <= height - 1; i++) {
                 if (words[preX][i] == null) {
                     x_right++;
                     continue;
@@ -101,7 +101,7 @@ public class Judge {
 
         }
 
-        if (preOrientation == HORIZONTAL) {
+        if (preOrientation == VERTICAL) {
             for (int i = preX - 1; i >= 0; i--) {
                 if (words[i][preY] == null) {
                     y_top++;
