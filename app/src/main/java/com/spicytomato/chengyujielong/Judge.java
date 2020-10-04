@@ -8,6 +8,16 @@ public class Judge {
     public final static boolean VERTICAL = false;
 
 
+    /**
+     *
+     * @param width 整个地图的宽
+     * @param height 整个地图的高
+     * @param preOrientation 被选中成语的当前状态
+     * @param preX 相同字的横坐标
+     * @param preY 相同字的纵坐标
+     * @param words 二位字符串数组
+     * @return
+     */
     public static int selectNumber(int width, int height, boolean preOrientation, int preX, int preY, String[][] words) {
         int y_top = 0;
         int x_left = 0;
@@ -17,7 +27,7 @@ public class Judge {
         int length = 0;
 
 
-        if (preOrientation == HORIZONTAL) {
+        if (preOrientation == VERTICAL) {
             for (int i = preY - 1; i >= 0; i--) {
                 if (words[preX][i] == null) {
                     x_left++;
@@ -35,9 +45,9 @@ public class Judge {
                 }
             }
             length = x_left + x_right;
+            System.out.println("length "  + length);
             Random random = new Random();
             if (length == 3) {
-
                 switch (x_left) {
                     case 0:
                         result = 1;
@@ -47,6 +57,9 @@ public class Judge {
                         break;
                     case 2:
                         result = 3;
+                        break;
+                    case 3:
+                        result = 4;
                         break;
                     default:
                         result = -1;
@@ -64,7 +77,7 @@ public class Judge {
                         if (rest > 1) {
                             result = random.nextInt(3) + 1;
                         } else {
-                            result = 1 + random.nextInt(2) + 1;
+                            result = 2 + random.nextInt(2) + 1;
                         }
                         break;
                     default:
@@ -88,7 +101,7 @@ public class Judge {
 
         }
 
-        if (preOrientation == VERTICAL) {
+        if (preOrientation == HORIZONTAL) {
             for (int i = preX - 1; i >= 0; i--) {
                 if (words[i][preY] == null) {
                     y_top++;
@@ -97,7 +110,7 @@ public class Judge {
                     break;
                 }
             }
-            for (int i = preY + 1; i <= height - 1; i++) {
+            for (int i = preX + 1; i <= height - 1; i++) {
                 if (words[i][preY] == null) {
                     y_bottom++;
                     continue;
@@ -106,9 +119,9 @@ public class Judge {
                 }
             }
             length = y_top + y_bottom;
+            System.out.println("length "  + length + y_top + y_bottom);
             Random random = new Random();
             if (length == 3) {
-
                 switch (y_top) {
                     case 0:
                         result = 1;
@@ -118,6 +131,9 @@ public class Judge {
                         break;
                     case 2:
                         result = 3;
+                        break;
+                    case 3:
+                        result = 4;
                         break;
                     default:
                         result = -1;
@@ -135,7 +151,7 @@ public class Judge {
                         if (rest > 1) {
                             result = random.nextInt(3) + 1;
                         } else {
-                            result = 1 + random.nextInt(2) + 1;
+                            result = 2 + random.nextInt(2) + 1;
                         }
                         break;
                     default:
@@ -150,6 +166,7 @@ public class Judge {
                         }
                         if (y_bottom >= 3) {
                             result = random.nextInt(4) + 1;
+                            System.out.println(result);
                         }
                         break;
                 }

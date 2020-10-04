@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     public int[] paint(int result, boolean orientation) {
 
+        return new int[2];
     }
 
 
